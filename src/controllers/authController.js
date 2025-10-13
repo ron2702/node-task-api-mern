@@ -7,6 +7,42 @@ const generateToken = (id) => {
     });
 };
 
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Juan Pérez
+ *               email:
+ *                 type: string
+ *                 example: test@example.com
+ *               password:
+ *                 type: string
+ *                 example: Password123
+ *     responses:
+ *       '201':
+ *         description: User registered successfully, returns the JWT token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       '400':
+ *         description: User already exists
+ */
 exports.registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -36,6 +72,39 @@ exports.registerUser = async (req, res) => {
     }
 };
 
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Login a user and return a JWT token
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: test@example.com
+ *               password:
+ *                 type: string
+ *                 example: Password123
+ *     responses:
+ *       '200':
+ *         description: Login successful, returns the JWT token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       '401':
+ *         description: Invalid credentials
+ */
 exports.authUser = async (req, res) => {
     const { email, password } = req.body;
 
