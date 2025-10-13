@@ -1,0 +1,30 @@
+{
+  "name": "task-api-mern",
+  "version": "1.0.0",
+  "description": "API RESTful para gestión de tareas construida con Node.js, Express y MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ron2702/node-task-api-mern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ron2702/node-task-api-mern/issues"
+  },
+  "homepage": "https://github.com/ron2702/node-task-api-mern#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
