@@ -6,6 +6,8 @@ A robust and complete API for task management (To-Do List), built with the MERN 
 | Type | Links     |
 | :-------- | :------- | 
 | Repository | https://github.com/ron2702/node-task-api-mern |
+| Live Demo | https://task-api-mern-portfolio.onrender.com |
+| API Doc | https://task-api-mern-portfolio.onrender.com/api-docs/ |
 
 # ✨ Key Features
 
