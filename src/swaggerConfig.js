@@ -2,13 +2,12 @@ const swaggerJsdoc = require('swagger-jsdoc');
 
 const options = {
     definition: {
-        openapi: '3.0.0', // Especificación OpenAPI
+        openapi: '3.0.0',
         info: {
-            title: 'API RESTful de Tareas (Node.js/Express/MongoDB)',
+            title: 'API RESTful for tasks (Node.js/Express/MongoDB)',
             version: '1.0.0',
-            description: 'Una API completa para la gestión de tareas con autenticación JWT, diseñada para el portafolio.',
+            description: 'A complete API for task management with JWT authentication, designed for the portfolio.',
         },
-        // Definición de seguridad global (todas las rutas protegidas requieren Bearer Token)
         components: {
             securitySchemes: {
                 bearerAuth: {
@@ -61,15 +60,14 @@ const options = {
         servers: [
             {
                 url: `https://task-api-mern-portfolio.onrender.com/api`, 
-                description: 'Servidor de Producción Render'
+                description: 'Production Server on Render'
             },
             {
                 url: `http://localhost:${process.env.PORT || 4000}/api`,
-                description: 'Servidor de Desarrollo Local',
+                description: 'Local Development Server',
             },
         ],
     },
-    // Rutas donde buscar los comentarios JSDoc para generar la documentación
     apis: ['./src/routes/*.js', './src/controllers/*.js'], 
 };
 
