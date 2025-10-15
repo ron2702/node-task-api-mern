@@ -17,10 +17,10 @@ const PORT = process.env.PORT || 4000;
 async function connectDB() {
     try {
         await mongoose.connect(process.env.MONGO_URI);
-        console.log('🔗 Conexión exitosa a MongoDB Atlas.');
+        console.log('🔗 Success.');
     } catch (error) {
-        console.error('❌ Error al conectar a la base de datos:', error.message);
-        process.exit(1); 
+        console.error('❌ Error connecting to database:', error.message);
+        process.exit(1);
     }
 }
 
@@ -30,12 +30,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes); 
 
 app.get('/', (req, res) => {
-    res.send('API de Tareas está corriendo. ¡Lista para el CRUD!');
+    res.send('Task API is running. Ready for CRUD operations!');
 });
 
 connectDB().then(() => {
     app.listen(PORT, () => {
-        console.log(`🚀 Servidor Express escuchando en el puerto ${PORT}`);
+        console.log(`🚀 Express server listening on port ${PORT}`);
         console.log(`URL: http://localhost:${PORT}`);
     });
 });

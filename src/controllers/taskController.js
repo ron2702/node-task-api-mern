@@ -26,8 +26,8 @@ exports.getAllTasks = async (req, res) => {
         const tasks = await Task.find({ user: req.user._id });
         res.status(200).json(tasks);
     } catch (error) {
-        console.error('Error al obtener tareas:', error);
-        res.status(500).json({ message: 'Error al obtener tareas' });
+        console.error('Error obtaining tasks:', error);
+        res.status(500).json({ message: 'Error obtaining tasks' });
     }
 };
 
@@ -72,8 +72,8 @@ exports.createTask = async (req, res) => {
 
         res.status(201).json(taskSaved);
     } catch (error) {
-        console.error('Error al crear tarea:', error);
-        res.status(500).json({ message: 'Error al crear tarea' });
+        console.error('Error creating task:', error);
+        res.status(500).json({ message: 'Error creating task' });
     }
 };
 
@@ -108,13 +108,13 @@ exports.getTaskById = async (req, res) => {
         const task = await Task.findOne({ _id: req.params.id, user: req.user._id });
 
         if (!task) {
-            return res.status(404).json({ message: 'Tarea no encontrada o no tienes permiso para verla' });
+            return res.status(404).json({ message: 'Task not found or user not authorized to view it' });
         }
 
         res.status(200).json(task);
     } catch (error) {
-        console.error('Error al obtener tarea:', error);
-        res.status(500).json({ message: 'Error al obtener tarea' });
+        console.error('Error obtaining task:', error);
+        res.status(500).json({ message: 'Error obtaining task' });
     }
 };
 
@@ -168,13 +168,13 @@ exports.updateTask = async (req, res) => {
         );
 
         if (!updatedTask) {
-            return res.status(404).json({ message: 'Tarea no encontrada o no tienes permiso para actualizarla' });
+            return res.status(404).json({ message: 'Task not found or user not authorized to update it' });
         }
 
         res.status(200).json(updatedTask);
     } catch (error) {
-        console.error('Error al actualizar tarea:', error);
-        res.status(500).json({ message: 'Error al actualizar tarea' });
+        console.error('Error updating task:', error);
+        res.status(500).json({ message: 'Error updating task' });
     }
 }
 
@@ -206,13 +206,13 @@ exports.deleteTask = async (req, res) => {
 
     const deletedTask = await Task.findOneAndDelete({ _id: req.params.id, user: req.user._id });
     if (!deletedTask) {
-      return res.status(404).json({ message: 'Tarea no encontrada o no tienes permiso para eliminarla' });
+      return res.status(404).json({ message: 'Task not found or user not authorized to delete it' });
     }
 
     res.status(204).send();
   } catch (error) {
-    console.error('Error al eliminar tarea:', error);
-    res.status(500).json({ message: 'Error al eliminar tarea' });
+    console.error('Error deleting task:', error);
+    res.status(500).json({ message: 'Error deleting task' });
   }
 
 }; 

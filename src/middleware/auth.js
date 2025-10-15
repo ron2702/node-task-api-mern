@@ -17,12 +17,12 @@ exports.protect = async (req, res, next) => {
             next();
 
         } catch (error) {
-            console.error('Error de token:', error.message);
-            res.status(401).json({ message: 'No autorizado, token fallido' });
+            console.error('Token error:', error.message);
+            res.status(401).json({ message: 'Unauthorized, token failed' });
         }
     }
 
     if (!token) {
-        res.status(401).json({ message: 'No autorizado, no hay token' });
+        res.status(401).json({ message: 'Unauthorized, no token provided' });
     }
 };

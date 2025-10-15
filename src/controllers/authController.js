@@ -50,7 +50,7 @@ exports.registerUser = async (req, res) => {
         const userExists = await User.findOne({ email });
 
         if (userExists) {
-            return res.status(400).json({ message: 'El usuario con este correo ya existe.' });
+            return res.status(400).json({ message: 'The user already exists.' });
         }
 
         const user = await User.create({
@@ -68,7 +68,7 @@ exports.registerUser = async (req, res) => {
             });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error en el servidor al registrar', error: error.message });
+        res.status(500).json({ message: 'Server error while registering', error: error.message });
     }
 };
 
@@ -119,9 +119,9 @@ exports.authUser = async (req, res) => {
                 token: generateToken(user._id),
             });
         } else {
-            res.status(401).json({ message: 'Correo o contraseña inválidos.' });
+            res.status(401).json({ message: 'Invalid email or password.' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error en el servidor al iniciar sesión', error: error.message });
+        res.status(500).json({ message: 'Server error while logging in', error: error.message });
     }
 };
